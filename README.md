@@ -35,7 +35,7 @@ Buttons:
 
 hover/active: opacity: 0.9
 
-🖼️ How to View the Design
+How to View the Design
 Create a Figma account if you don’t have one.
 
 Open the shared project link.
@@ -44,7 +44,7 @@ Click “Duplicate to your Drafts” to get full access.
 
 Check all components, layout rules, and design assets from your own copy.
 
-💾 Setup Instructions
+Setup Instructions
 Clone the repository:
 
 bash
