@@ -1,0 +1,326 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --primary-color: #FF6565;
+    --text-color: #FFFFFF;
+    --text-opacity: rgba(255, 255, 255, 0.8);
+    --max-width: 1000px;
+    --font-family: 'Source Sans Pro', Arial, sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 27px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 32px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    text-transform: lowercase;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.nav-toggle span {
+    width: 20px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('images/headphones_hero_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 40px;
+    color: var(--text-opacity);
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 31px;
+    border: none;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.hero-description {
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.625;
+    margin-top: 65px;
+    color: var(--text-opacity);
+    max-width: 637px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hamburger Icon */
+.menu-checkbox {
+    display: none;
+}
+
+.nav-toggle.hamburger-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.hamburger-icon .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-icon .bar:nth-child(2) {
+    width: 75%;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .header-container {
+        position: relative;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        min-height: 60px;
+        padding: 10px 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+
+    .nav-toggle.hamburger-icon {
+        display: flex;
+        position: absolute;
+        width: 20px;
+        height: 15px;
+        top: 15px;
+        left: 20px;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        text-align: center;
+        padding: 20px;
+        z-index: 5;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+    }
+
+    .nav-menu li a {
+        font-size: 1.2em;
+        padding: 10px 0;
+        display: block;
+        color: #fffdfd;
+        transition: color 0.3s ease;
+    }
+
+    .nav-menu li a:hover {
+        color: #FF6565;
+    }
+
+    .menu-checkbox:checked ~ .nav-menu {
+        display: flex;
+    }
+
+    .menu-checkbox:checked ~ .nav-toggle.hamburger-icon .bar {
+        width: 100%;
+        align-self: center;
+    }
+
+    .menu-checkbox:checked ~ .nav-toggle.hamburger-icon .bar:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+
+    .menu-checkbox:checked ~ .nav-toggle.hamburger-icon .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-checkbox:checked ~ .nav-toggle.hamburger-icon .bar:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    .hero {
+        min-height: 100vh;
+        background-attachment: scroll;
+        transition: background-image 0.3s ease-in-out;
+    }
+
+    .hero-content {
+        padding-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .hero {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-subtitle {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+}

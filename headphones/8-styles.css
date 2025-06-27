@@ -1,0 +1,829 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #FF6565;
+    --text-color: #FFFFFF;
+    --text-opacity: rgba(255, 255, 255, 0.8);
+    --max-width: 1000px;
+    --font-family: 'Source Sans Pro', Arial, sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 27px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 32px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex; /* Default for desktop */
+    gap: 40px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: var(--font-weight-bold);
+    text-transform: lowercase;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Mobile menu toggle (hamburger icon) - Hidden by default on desktop */
+.nav-toggle.hamburger-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    width: 20px;
+    height: 15px; /* Adjusted height for 3 bars */
+    position: relative;
+    z-index: 10;
+}
+
+.hamburger-icon .bar {
+    display: block;
+    width: 100%;
+    height: 2px; /* Thinner bars */
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Specific bar lengths for the initial hamburger state */
+.hamburger-icon .bar:nth-child(1) { width: 100%; }
+.hamburger-icon .bar:nth-child(2) { width: 75%; }
+.hamburger-icon .bar:nth-child(3) { width: 100%; }
+
+/* Hide the checkbox input visually */
+.menu-checkbox {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('images/headphones_hero_1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 640px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 40px;
+    color: var(--text-opacity);
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 31px;
+    border: none;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.hero-description {
+    font-size: 16px;
+    font-weight: var(--font-weight-regular);
+    line-height: 1.625;
+    margin-top: 65px;
+    color: var(--text-opacity);
+    max-width: 637px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Media Queries --- */
+
+/* For screens 768px and below (general tablet/mobile adjustments) */
+@media (max-width: 768px) {
+    .header-container {
+        position: relative;
+    }
+
+    .nav {
+        justify-content: center; /* Center logo by default */
+        position: relative;
+        width: 100%;
+        min-height: 60px;
+        padding: 10px 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+
+    .nav-menu {
+        /* Desktop styles for nav-menu are active above 480px, but hidden below */
+        /* For 768px to 481px, desktop nav is still active */
+        /* Will override with display:none in the 480px media query */
+    }
+
+    .hero {
+        min-height: 100vh;
+        background-attachment: scroll;
+    }
+
+    .hero-content {
+        padding-top: 50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* For screens 480px and below (mobile specific for hamburger menu) */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .nav-toggle.hamburger-icon {
+        display: flex; /* Show hamburger icon */
+        position: absolute;
+        top: 50%; /* Center vertically */
+        left: 20px;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .nav-menu {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        text-align: center;
+        padding: 20px 0;
+        z-index: 5;
+        background-color: #060f2c; /* Background for the mobile menu */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .nav-menu a {
+        margin: 10px 0;
+        font-size: 1.2em;
+        padding: 10px 0;
+        display: block;
+        color: #fffdfd;
+        transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+        color: #FF6565;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-subtitle {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+}
+
+/* Styles for when the menu is open (controlled by JavaScript by adding .menu-open to .header) */
+.header.menu-open .nav-menu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Transform hamburger to 'X' when menu is open */
+.header.menu-open .hamburger-icon .bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg); /* Adjusted for 2px height */
+}
+
+.header.menu-open .hamburger-icon .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.header.menu-open .hamburger-icon .bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg); /* Adjusted for 2px height */
+}
+
+/* --- What we do section --- */
+.what-we-do {
+    background-color: #FFFFFF;
+    color: #000000; /* This sets the default text color to black for this section */
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* General section description styles (will be overridden by more specific rules) */
+.section-description {
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    /* Removed default color #000000 here to allow inheritance/specific overrides */
+}
+
+
+/* Services Grid */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+/* Individual service box */
+.service {
+    padding: 20px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.service h3 {
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 10px;
+    color: #333333; /* Ensure service headings are dark */
+}
+
+.service p {
+    font-size: 14px;
+    color: #555; /* Ensure service paragraphs are dark */
+}
+
+
+/* Our results section */
+.results-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    background-image: url('images/headphones_hero_2.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background scrolls with parallax */
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none; /* Allows clicks to pass through this transparent overlay */
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #fff; /* This sets the default text color to white for this section's content */
+}
+
+.section-heading {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff; /* Explicitly set to white for "Our results" title */
+}
+
+/* --- IMPORTANT FIX --- */
+/* Override the .section-description specifically for the "Our results" section */
+.results-section .section-description {
+    color: #FFFFFF; /* Set text color to white for this specific section */
+}
+/* --- END IMPORTANT FIX --- */
+
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+}
+
+.pentagon-shape {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(
+        50% 0%,
+        100% 35%,
+        80% 100%,
+        20% 100%,
+        0% 35%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.pentagon-shape:hover {
+    transform: scale(1.1) rotate(5deg);
+    background-color: #cc4d4d; /* A slightly darker red for hover */
+}
+
+.stat-value {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: 0 10px;
+}
+
+/* Responsive adjustments for results section */
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 2em;
+    }
+    .section-description {
+        font-size: 1em;
+    }
+    .stats-container {
+        gap: 20px;
+    }
+    .stat-item {
+        width: 150px;
+        height: 150px;
+    }
+    .stat-value {
+        font-size: 2em;
+    }
+    .stat-label {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 30px 15px;
+    }
+    .stat-item {
+        width: 120px;
+        height: 120px;
+    }
+    .stat-value {
+        font-size: 1.8em;
+    }
+    .stat-label {
+        font-size: 0.7em;
+    }
+}
+
+/* --- Contact Us Section --- */
+.contact-section {
+    background-color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-section .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-heading {
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1em;
+    font-weight: 600; /* Darker color for labels */
+    color: #333;
+    text-align: left;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #FF6565;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: none;
+    min-height: 50px;
+    height: auto;
+    overflow: hidden;
+}
+
+.submit-button {
+    background-color: #FF6565;
+    color: #fff;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #e03e00;
+    transform: translateY(-2px);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments for contact form */
+@media (max-width: 600px) {
+    .contact-heading {
+        font-size: 2em;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        padding: 8px 0;
+        font-size: 0.9em;
+    }
+
+    .submit-button {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+}
+
+/* --- Footer Section --- */
+.main-footer {
+    background-color: #060f2c;
+    padding: 40px 20px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-top-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.social-icon.facebook {
+    background-image: url('images/icon-facebook.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.social-icon.twitter {
+    background-image: url('images/icon-twitter.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.social-icon.instagram {
+    background-image: url('images/icon-instagram.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.footer-copyright {
+    font-size: 0.6em;
+    color: #424242;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/* --- Responsive Adjustments for Footer --- */
+@media (max-width: 768px) {
+    .footer-top-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .footer-logo,
+    .social-links {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-copyright {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-footer {
+        padding: 30px 15px;
+    }
+
+    .footer-logo img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .footer-logo span {
+        font-size: 1em;
+    }
+
+    .social-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer-copyright {
+        font-size: 0.8em;
+    }
+}
+
+/* Hide nav links on small screens */
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 200px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+}
+
+.nav-menu a {
+  color: #000;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.menu-open .nav-menu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hamburger icon */
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  border-radius: 3px;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 100%;
+    background-color: white;
+  }
+
+  .nav-link {
+    padding: 10px;
+    color: black;
+  }
+
+  nav.nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
